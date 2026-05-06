@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import shutil
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DOCS = ROOT / "docs"
+
+
+def main() -> None:
+    DOCS.mkdir(parents=True, exist_ok=True)
+    for name in ("dashboard.html", "wireframe_dashboard.svg"):
+        src = ROOT / "analytics_stack" / "published" / name
+        if src.exists():
+            shutil.copy(src, DOCS / name)
+    hub = """<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<title>Highway crossings — Data lab</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:640px;margin:3rem auto;padding:0 1rem}
+a{display:block;margin:.75rem 0;color:#2b7fd4;font-weight:600}
+</style></head><body>
+<h1>Highway–rail crossing risk</h1>
+<p>Interactive dashboard + analyst/DS report</p>
+<a href="dashboard.html">Interactive dashboard</a>
+<a href="report.html">Combined report (SQL + modeling)</a>
+<a href="wireframe_dashboard.svg">Wireframe</a>
+</body></html>"""
+    (DOCS / "index.html").write_text(hub, encoding="utf-8")
+    print("docs/ ready")
+
+
+if __name__ == "__main__":
+    main()

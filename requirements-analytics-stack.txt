@@ -1,0 +1,6 @@
+duckdb>=1.0.0
+pandas>=2.0.0
+numpy>=1.26.0
+scikit-learn>=1.4.0
+matplotlib>=3.8.0
+shap>=0.44.0

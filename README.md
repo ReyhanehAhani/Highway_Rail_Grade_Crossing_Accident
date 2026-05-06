@@ -78,3 +78,18 @@ The main goal is to predict the **severity of accidents** (e.g., fatalities, inj
 - `scripts/export_for_bi.py` — tune `COLMAP`, emit `severity_by_state_year.csv` / device mix (`pip install -r analytics_stack/requirements-analytics.txt`)
 
 ---
+
+## SQL + KPI + quality + modeling + report + Pages
+
+```bash
+pip install -r requirements-analytics-stack.txt
+python analytics/quality/validate_published.py
+python analytics/run_sql_kpis.py
+python modeling/train_eval_explain.py    # baselines, metrics, confusion, errors, permutation (+ optional SHAP)
+python analytics/reports/build_report.py
+python tools/build_docs.py
+```
+
+Workflow: `.github/workflows/data-stack.yml` (sets `CI=1` so SHAP is skipped in automation).
+
+---

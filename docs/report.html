@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<title>Highway crossings — report</title>
+<style>
+body { font-family: system-ui, sans-serif; max-width: 840px; margin: 2rem auto; padding: 0 1rem; line-height: 1.55; }
+pre { background: #f5f9fc; padding: 1rem; overflow: auto; border-radius: 8px; font-size: 0.8rem; }
+a { color: #2b7fd4; }
+</style></head><body>
+<p><a href="index.html">← Hub</a> · <a href="dashboard.html">Dashboard</a></p>
+<h1>Highway–rail crossings — mixed analyst + modeling case study</h1>
+<h2>Analyst layer</h2>
+<ul><li>**SQL:** `analytics/sql/kpis.sql` executed via `analytics/run_sql_kpis.py` (DuckDB on published CSVs).  </li><li>**Quality:** `analytics/quality/validate_published.py` guards schemas and label ranges.  </li><li>**Demo data:** `analytics_stack/published/` is **synthetic** for a self-contained repo; swap in FRA-aligned exports from your notebook for real narratives.</li></ul>
+<h2>Modeling layer</h2>
+<ul><li>**Task:** Multiclass `Severity_Bucket` with classes 0, 1, and 2 from `State`, `Year`, `Warning_Device`.</li><li>**Baselines:** `DummyClassifier` (stratified) vs `LogisticRegression` vs `RandomForestClassifier`.  </li><li>**Evaluation:** Accuracy, macro-F1, confusion matrix, per-class recall (see `modeling/artifacts/`).  </li><li>**Error analysis:** Misclassified rows exported for review.  </li><li>**Interpretability:** `permutation_importance` (always) plus optional SHAP on the forest when `CI` is not set.</li></ul>
+<p>Run locally:</p>
+<pre>```bash
+pip install -r requirements-analytics-stack.txt
+python modeling/train_eval_explain.py
+python analytics/run_sql_kpis.py
+```
+</pre><h2>SQL snapshot</h2><pre></pre><h2>Modeling artifacts</h2><ul><li><a href='../modeling/artifacts/metrics.json'>metrics.json</a></li><li><a href='../modeling/artifacts/confusion_matrix.png'>confusion matrix</a></li><li><a href='../modeling/artifacts/permutation_importance.png'>permutation importance</a></li><li><a href='../modeling/artifacts/error_sample.csv'>error sample</a></li><li><a href='../modeling/artifacts/shap_summary.png'>SHAP summary (optional)</a></li></ul>
+</body></html>

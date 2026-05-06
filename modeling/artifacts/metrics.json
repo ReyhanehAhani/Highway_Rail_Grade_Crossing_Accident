@@ -1,0 +1,18 @@
+{
+  "baseline_most_frequent": {
+    "accuracy": 0.4964322120285423,
+    "macro_f1": 0.22116257947320617
+  },
+  "baseline_stratified": {
+    "accuracy": 0.382262996941896,
+    "macro_f1": 0.3261433801529048
+  },
+  "logreg_multinomial": {
+    "accuracy": 0.48827726809378186,
+    "macro_f1": 0.24574145473653555
+  },
+  "random_forest": {
+    "accuracy": 0.36085626911314983,
+    "macro_f1": 0.3257080610021787
+  }
+}

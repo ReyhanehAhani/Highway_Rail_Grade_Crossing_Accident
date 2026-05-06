@@ -1,0 +1,25 @@
+name: data-stack
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    env:
+      CI: "1"
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-analytics-stack.txt
+      - run: python analytics/quality/validate_published.py
+      - run: python analytics/run_sql_kpis.py
+      - run: python modeling/train_eval_explain.py
+      - run: python analytics/reports/build_report.py
+      - run: python tools/build_docs.py
