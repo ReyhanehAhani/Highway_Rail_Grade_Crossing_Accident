@@ -66,6 +66,7 @@ The main goal is to predict the **severity of accidents** (e.g., fatalities, inj
 - Jupyter Notebook
 - GitHub for version control and sharing
 - **Tableau, Power BI, Figma** — see `analytics_stack/` (exports, Figma IA, BI recipes) and `scripts/export_for_bi.py`
+- **Published demo pack** — `analytics_stack/published/dashboard.html` (interactive), SVG wireframe, CSVs for BI import (`tools/build_published_deliverables.py` to regenerate)
 
 ---
 
