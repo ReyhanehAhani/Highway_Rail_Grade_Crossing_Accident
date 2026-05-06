@@ -9,9 +9,9 @@ a { color: #2b7fd4; }
 <p><a href="index.html">← Hub</a> · <a href="dashboard.html">Dashboard</a></p>
 <h1>Highway–rail crossings — mixed analyst + modeling case study</h1>
 <h2>Analyst layer</h2>
-<ul><li>**SQL:** `analytics/sql/kpis.sql` executed via `analytics/run_sql_kpis.py` (DuckDB on published CSVs).  </li><li>**Quality:** `analytics/quality/validate_published.py` guards schemas and label ranges.  </li><li>**Demo data:** `analytics_stack/published/` is **synthetic** for a self-contained repo; swap in FRA-aligned exports from your notebook for real narratives.</li></ul>
+<ul><li><strong>SQL:</strong> `analytics/sql/kpis.sql` executed via `analytics/run_sql_kpis.py` (DuckDB on published CSVs).  </li><li><strong>Quality:</strong> `analytics/quality/validate_published.py` guards schemas and label ranges.  </li><li><strong>Demo data:</strong> `analytics_stack/published/` is <strong>synthetic</strong> for a self-contained repo; swap in FRA-aligned exports from your notebook for real narratives.</li></ul>
 <h2>Modeling layer</h2>
-<ul><li>**Task:** Multiclass `Severity_Bucket` with classes 0, 1, and 2 from `State`, `Year`, `Warning_Device`.</li><li>**Baselines:** `DummyClassifier` (stratified) vs `LogisticRegression` vs `RandomForestClassifier`.  </li><li>**Evaluation:** Accuracy, macro-F1, confusion matrix, per-class recall (see `modeling/artifacts/`).  </li><li>**Error analysis:** Misclassified rows exported for review.  </li><li>**Interpretability:** `permutation_importance` (always) plus optional SHAP on the forest when `CI` is not set.</li></ul>
+<ul><li><strong>Task:</strong> Multiclass `Severity_Bucket` with classes 0, 1, and 2 from `State`, `Year`, `Warning_Device`.</li><li><strong>Baselines:</strong> `DummyClassifier` (stratified) vs `LogisticRegression` vs `RandomForestClassifier`.  </li><li><strong>Evaluation:</strong> Accuracy, macro-F1, confusion matrix, per-class recall (see `modeling/artifacts/`).  </li><li><strong>Error analysis:</strong> Misclassified rows exported for review.  </li><li><strong>Interpretability:</strong> `permutation_importance` (always) plus optional SHAP on the forest when `CI` is not set.</li></ul>
 <p>Run locally:</p>
 <pre>```bash
 pip install -r requirements-analytics-stack.txt
