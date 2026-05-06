@@ -65,3 +65,15 @@ The main goal is to predict the **severity of accidents** (e.g., fatalities, inj
 - Python, Pandas, Scikit-learn, Matplotlib, Seaborn, Plotly
 - Jupyter Notebook
 - GitHub for version control and sharing
+- **Tableau, Power BI, Figma** — see `analytics_stack/` (exports, Figma IA, BI recipes) and `scripts/export_for_bi.py`
+
+---
+
+## Portfolio stack — Pillar 1 (storytelling)
+
+- `analytics_stack/README.md` — CSV export bridge from the notebook
+- `analytics_stack/figma/dashboard_wireframe.md` — dashboard information architecture
+- `analytics_stack/tableau/` and `analytics_stack/powerbi/` — workbook instructions
+- `scripts/export_for_bi.py` — tune `COLMAP`, emit `severity_by_state_year.csv` / device mix (`pip install -r analytics_stack/requirements-analytics.txt`)
+
+---
